@@ -1105,9 +1105,10 @@ pub(super) fn handle_model_command(app: &mut App, trimmed: &str) -> bool {
                 })
                 .collect();
             app.push_display_message(DisplayMessage::system(format!(
-                "Reasoning effort: {}\nAvailable: {}\nUse /effort <level> or Alt+Left / Alt+Right to change.",
+                "Reasoning effort: {}\nAvailable: {}\nUse /effort <level> or {} to change.",
                 current_label,
-                list.join(" · ")
+                list.join(" · "),
+                crate::tui::keybind::effort_switch_keys_label()
             )));
         }
         return true;
